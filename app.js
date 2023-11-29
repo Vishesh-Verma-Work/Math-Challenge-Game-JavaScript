@@ -29,6 +29,8 @@ try {
     result = eval(expression);
     result = Math.round(result);
     console.log("Result:", result);
+    
 } catch (error) {
+    result = Math.round(result);
     console.log("Invalid expression:", error);
 }
