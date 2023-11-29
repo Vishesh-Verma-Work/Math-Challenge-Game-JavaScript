@@ -9,32 +9,58 @@ function randomExp() {
 }
 
 
-let num1 = randomNum();
-let num2 = randomNum();
-let num3 = randomNum();
-let num4 = randomNum();
-let num5 = randomNum();
-
-let exp1 = randomExp();
-let exp2 = randomExp();
-let exp3 = randomExp();
-let exp4 = randomExp();
-
-console.log(`${num1} ${exp1} ${num2} ${exp2} ${num3} ${exp3} ${num4} ${exp4} ${num5}`);
-
-let expression = `${num1} ${exp1} ${num2} ${exp2} ${num3} ${exp3} ${num4} ${exp4} ${num5}`;
+let num1, num2, num3, num4, num5;
+let exp1, exp2, exp3, exp4;
 let result;
+let expression
 
-try {
-    result = eval(expression);
-    result = Math.floor(result);
-    console.log("Floored Rounded Result:", result);
+function genNum() {
+    num2 = randomNum();
+    num1 = randomNum();
+    num3 = randomNum();
+    num4 = randomNum();
+    num5 = randomNum();
+
+    exp1 = randomExp();
+    exp2 = randomExp();
+    exp3 = randomExp();
+    exp4 = randomExp();
+
+    expression = `${num1} ${exp1} ${num2} ${exp2} ${num3} ${exp3} ${num4} ${exp4} ${num5}`;
+    console.log(expression);
 
 
-} catch (error) {
-    result = Math.round(result);
-    console.log("Invalid expression:", error);
+    try {
+        result = eval(expression);
+        result = Math.floor(result);
+        console.log("Result:", result);
+
+
+    } catch (error) {
+        result = Math.round(result);
+        console.log("Invalid expression:", error);
+    }
+
 }
+
+function replaceNum() {
+    expression1.innerHTML = num1;
+    expression2.innerHTML = num2;
+    expression3.innerHTML = num3;
+    expression4.innerHTML = num4;
+    expression5.innerHTML = num5;
+
+    operator1.innerHTML = exp1;
+    operator2.innerHTML = exp2;
+    operator3.innerHTML = exp3;
+    operator4.innerHTML = exp4;
+}
+
+genNum();
+// console.log(`${num1} ${exp1} ${num2} ${exp2} ${num3} ${exp3} ${num4} ${exp4} ${num5}`);
+
+
+
 
 
 
@@ -57,34 +83,65 @@ let operator4 = document.querySelector(".operator4");
 
 
 let start = document.querySelector("#start");
-
+let done = document.querySelector(".btn");
+let warning = document.querySelector(".warning");
+let level = document.querySelector(".level");
 
 let answer;
 let form = document.querySelector(".form");
 let ans = document.querySelector(".answer");
+let mainBox = document.querySelector(".mainBox");
+let lvl = 0;
 
 form.addEventListener("submit", function (e) {
     e.preventDefault();
+
     answer = ans.value
-    console.log(answer);
+    
+    
+
+    if (ans.value) {
+        if (answer == result) {
+            console.log("Correct");
+            warning.innerHTML = "";
+            lvl++;
+            ans.value = "";
+            level.innerHTML = `Level : ${lvl}`;
+
+            setTimeout(() => {
+                mainBox.style.backgroundColor = 'green';
+            }, 0);
+
+            setTimeout(() => {
+                mainBox.style.backgroundColor = 'blue';
+            }, 800);
+
+            genNum();
+            replaceNum();
+
+        }
+        else {
+
+            setTimeout(() => {
+                mainBox.style.backgroundColor = 'red';
+            }, 0);
+
+            warning.innerHTML = "";
+        }
+    } else {
+        warning.innerHTML = "Input Your Result";
+    }
+
 });
 
 
 
 
-start.addEventListener("click", ()=> {
-    expression1.innerHTML = num1;
-    expression2.innerHTML = num2;
-    expression3.innerHTML = num3;
-    expression4.innerHTML = num4;
-    expression5.innerHTML = num5;
-    
-    operator1.innerHTML = exp1;
-    operator2.innerHTML = exp2;
-    operator3.innerHTML = exp3;
-    operator4.innerHTML = exp4;
+start.addEventListener("click", () => {
 
+    replaceNum()
     start.style.display = "none";
+    done.style.display = "inline";
 });
 
 

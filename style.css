@@ -11,9 +11,10 @@ body {
 
 .mainBox {
     display: flex;
+    /* flex-direction: column; */
     justify-content: center;
     align-items: center;
-    margin: 5rem auto;
+    margin: 3rem auto 0 auto;
     height: 20rem;
     width: 44rem;
     background-color: blue;
@@ -49,11 +50,12 @@ body {
 }
 
 .answer {
+    padding: 15px;
     border: none;
     font-weight: 600;
     font-size: 28px;
     width: 50px;
-    height: 50px;
+    height: 22px;
     border-radius: 8px;
     background-color: lightblue;
 }
@@ -75,10 +77,42 @@ body {
     width: 150px;
     height: 51px;
     border-radius: 8px;
+    display: none;
 }
 
 .form {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#start {
+    border: 1px solid white;
+    font-size: 22px;
+    color: white;
+    background-color: green;
+    margin: 0 10px;
+    font-weight: 600;
+    /* font-size: 18px; */
+    width: 150px;
+    height: 51px;
+    border-radius: 8px;
+}
+
+
+.warning {
+    font-size: 30px;
+    font-weight: 600;
+    margin: 3rem auto 0 auto;
+    height: 36px;
+    width: 231px;
+}
+
+.level {
+    font-size: 30px;
+    height: 10px;
+    width: 110px;
+    font-weight: 500;
+    margin: auto;
+    margin-top: 2rem;
 }
