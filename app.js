@@ -92,6 +92,7 @@ let form = document.querySelector(".form");
 let ans = document.querySelector(".answer");
 let mainBox = document.querySelector(".mainBox");
 let lvl = 0;
+let highScr;
 
 form.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -125,8 +126,16 @@ form.addEventListener("submit", function (e) {
             setTimeout(() => {
                 mainBox.style.backgroundColor = 'red';
             }, 0);
+            done.innerHTML = "Try Again";
+            warning.innerHTML = `Wronge Answer!! Your Level is ${lvl}`;
+            highScr = lvl;
 
-            warning.innerHTML = "";
+
+            done.addEventListener("click", ()=> {
+                reset();
+            });
+            
+
         }
     } else {
         warning.innerHTML = "Input Your Result";
@@ -137,12 +146,32 @@ form.addEventListener("submit", function (e) {
 
 
 
-start.addEventListener("click", () => {
 
-    replaceNum()
+start.addEventListener("click", () => {
+    replaceNum();
     start.style.display = "none";
     done.style.display = "inline";
 });
 
 
+function reset() {
+    lvl = 0;
+    level.innerHTML = `Level : ${lvl}`;
+    warning.innerHTML = "ye";
+    warning.innerHTML = `Highest Score : ${highScr}`;
+    genNum();
+    replaceNum();
+}
 
+
+
+
+
+// done.addEventListener("click", ()=> {
+//     level = 0;
+//     console.log("Level is : ",level);
+//     level.innerHTML = `Level : ${lvl}`;
+//     warning.innerHTML = "";
+//     genNum();
+//     replaceNum();
+// });
