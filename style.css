@@ -17,7 +17,7 @@ body {
     margin: 3rem auto 0 auto;
     height: 20rem;
     width: 44rem;
-    background-color: blue;
+    background-color: rgb(225, 172, 92);
     border-radius: 1rem;
     box-shadow: 0 0 1rem rgb(6, 43, 207);
 }
